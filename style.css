@@ -360,11 +360,21 @@ label:focus {
 }
 
 /* --- Icon-only status modules: state shown by icon + colour --- */
-#custom-sysmon, #power-profiles-daemon, #network, #wireplumber, #bluetooth, #idle_inhibitor {
+/* Every icon gets the same fixed-width cell so glyphs of different
+   widths still sit at an even pitch (bar "spacing" is 0). */
+#custom-sysmon, #power-profiles-daemon, #network, #wireplumber, #bluetooth,
+#idle_inhibitor, #keyboard-state > label, #custom-rofi, #custom-power {
     padding: 0 7px;
+    margin: 0;
+    min-width: 20px;
     font-size: 15px;
     color: #828bb8;
 }
+
+#keyboard-state { padding: 0; margin: 0; }
+#clock { padding: 0 12px; }
+#custom-rofi { color: #1793d1; padding: 0 10px; }
+#custom-power { padding: 0 10px; }
 
 #custom-sysmon.warning { color: #ffc777; }
 #custom-sysmon.critical { color: #ff757f; }

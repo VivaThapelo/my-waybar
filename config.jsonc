@@ -4,7 +4,7 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 0, // Gaps come from each module's padding in style.css
     // Choose the order of the modules
     "modules-left": [
 	 "custom/rofi",
@@ -183,7 +183,7 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/rofi": {
-	    "format": "󱗼",
+	    "format": "",
 	    "on-click": "wofi --show drun"
     },
     "custom/power": {
@@ -194,8 +194,8 @@
 		"menu-actions": {
 			"shutdown": "systemctl poweroff",
 			"reboot": "systemctl reboot",
-			"suspend": "systemctl suspend",
-			"lock": "hyprlock"
+			"suspend": "sh -c 'pidof hyprlock >/dev/null || hyprlock & sleep 1; systemctl suspend'",
+			"lock": "sh -c 'pidof hyprlock >/dev/null || hyprlock'"
 		}
     }
 }
