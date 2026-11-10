@@ -358,3 +358,27 @@ label:focus {
 #privacy-item.audio-out {
     background-color: #0069d4;
 }
+
+/* --- Icon-only status modules: state shown by icon + colour --- */
+#cpu, #memory, #temperature, #network, #wireplumber, #bluetooth, #idle_inhibitor {
+    padding: 0 7px;
+    font-size: 15px;
+    color: #828bb8;
+}
+
+#cpu.warning, #memory.warning { color: #ffc777; }
+#cpu.critical, #memory.critical, #temperature.critical { color: #ff757f; }
+
+#wireplumber.muted { color: #545c7e; }
+
+#network.linked { color: #ffc777; }
+#network.disconnected, #network.disabled { color: #ff757f; }
+
+#bluetooth.connected { color: #82aaff; }
+#bluetooth.off, #bluetooth.disabled { color: #545c7e; }
+
+#idle_inhibitor.deactivated { color: #545c7e; }
+#idle_inhibitor.activated { color: #c3e88d; }
+
+#keyboard-state > label { font-size: 15px; color: #545c7e; background: transparent; }
+#keyboard-state > label.locked { color: #c3e88d; background: transparent; }
