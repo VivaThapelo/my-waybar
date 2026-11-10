@@ -360,14 +360,14 @@ label:focus {
 }
 
 /* --- Icon-only status modules: state shown by icon + colour --- */
-#cpu, #memory, #temperature, #network, #wireplumber, #bluetooth, #idle_inhibitor {
+#custom-sysmon, #power-profiles-daemon, #network, #wireplumber, #bluetooth, #idle_inhibitor {
     padding: 0 7px;
     font-size: 15px;
     color: #828bb8;
 }
 
-#cpu.warning, #memory.warning { color: #ffc777; }
-#cpu.critical, #memory.critical, #temperature.critical { color: #ff757f; }
+#custom-sysmon.warning { color: #ffc777; }
+#custom-sysmon.critical { color: #ff757f; }
 
 #wireplumber.muted { color: #545c7e; }
 
@@ -382,3 +382,7 @@ label:focus {
 
 #keyboard-state > label { font-size: 15px; color: #545c7e; background: transparent; }
 #keyboard-state > label.locked { color: #c3e88d; background: transparent; }
+
+#power-profiles-daemon.performance { color: #ff966c; }
+#power-profiles-daemon.balanced { color: #828bb8; }
+#power-profiles-daemon.power-saver { color: #c3e88d; }

@@ -20,9 +20,8 @@
         "wireplumber",
         "network",
 	"bluetooth",
-        "cpu",
-        "memory",
-        "temperature",
+        "power-profiles-daemon",
+        "custom/sysmon",
         "keyboard-state",
         //"hyprland/language",
         "clock",
@@ -109,32 +108,20 @@
     },
     "clock": {
         "timezone": "Africa/Johannesburg",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%a %d %b  %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
-    "cpu": {
-        "on-click": "ghostty --class=tui.btop -e btop",
-        "interval": 3,
+    "custom/sysmon": {
+        // CPU + memory + temperature in one icon; see custom_modules/sysmon.sh
+        "exec": "$HOME/.config/waybar/custom_modules/sysmon.sh",
+        "return-type": "json",
         "format": "{icon}",
-        "format-icons": ["󰾆", "󰾅", "󰓅"],
-        "states": { "warning": 60, "critical": 85 }
-    },
-    "memory": {
-        "on-click": "ghostty --class=tui.btop -e btop",
-        "interval": 5,
-        "format": "{icon}",
-        "format-icons": ["󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
-        "states": { "warning": 70, "critical": 90 },
-        "tooltip-format": "RAM {used:0.1f}G / {total:0.1f}G ({percentage}%)"
-    },
-    "temperature": {
-        "on-click": "ghostty --class=tui.btop -e btop",
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        "format": "{icon}",
-        "format-icons": ["", "", ""],
-        "tooltip-format": "{temperatureC}°C"
+        "format-icons": {
+            "low": "󰾆",
+            "medium": "󰾅",
+            "high": "󰓅"
+        },
+        "on-click": "ghostty --class=tui.btop -e btop"
     },
     "power-profiles-daemon": {
       "format": "{icon}",
