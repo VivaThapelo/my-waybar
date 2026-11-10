@@ -121,7 +121,7 @@
             "medium": "󰾅",
             "high": "󰓅"
         },
-        "on-click": "ghostty --class=tui.btop -e btop"
+        "on-click": "ghostty --class=tui.btop --confirm-close-surface=false -e btop"
     },
     "power-profiles-daemon": {
       "format": "{icon}",
@@ -135,7 +135,7 @@
       }
     },
     "bluetooth": {
-        "on-click": "ghostty --class=tui.bluetui -e bluetui",
+        "on-click": "ghostty --class=tui.bluetui --confirm-close-surface=false -e bluetui",
         "format": "󰂯",
         "format-connected": "󰂱",
         "format-disabled": "󰂲",
@@ -145,7 +145,7 @@
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
     "network": {
-        "on-click": "ghostty --class=tui.impala -e impala",
+        "on-click": "ghostty --class=tui.impala --confirm-close-surface=false -e impala",
         //"interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{icon}",
         "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
@@ -156,14 +156,14 @@
         "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr} via {gwaddr}",
         "tooltip-format-linked": "{ifname} (no IP)",
         "tooltip-format-disconnected": "Disconnected",
-        "on-click-right": "ghostty --class=tui.networkctl -e sh -c 'networkctl status; read _'"
+        "on-click-right": "ghostty --class=tui.networkctl --confirm-close-surface=false -e sh -c 'networkctl status; read _'"
     },
     "wireplumber": {
         "format": "{icon}",
         "format-muted": "󰖁",
         "format-icons": ["󰕿", "󰖀", "󰕾"],
         "tooltip-format": "{node_name}: {volume}%",
-        "on-click": "ghostty --class=tui.wiremix -e wiremix",
+        "on-click": "ghostty --class=tui.wiremix --confirm-close-surface=false -e wiremix",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 5
     },
