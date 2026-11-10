@@ -1,0 +1,29 @@
+/* wofi style for the system menu (custom_modules/menu.sh) */
+* {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+}
+
+window {
+    background-color: rgba(27, 29, 43, 0.95);
+    border: 1px solid rgba(134, 225, 252, 0.5);
+    border-radius: 8px;
+    color: #c8d3f5;
+}
+
+#outer-box { margin: 6px; }
+#input { margin: 0; min-height: 0; border: none; }
+#scroll, #inner-box { margin: 0; background-color: transparent; }
+
+#entry {
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+#entry:selected {
+    background-color: rgba(130, 170, 255, 0.25);
+    outline: none;
+}
+
+#text { color: #c8d3f5; }
+#text:selected { color: #ffffff; }

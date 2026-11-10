@@ -53,20 +53,14 @@ button:hover {
     background-color: #a37800;
 }
 
-#custom-rofi{
+#custom-menu{
     padding: 0 5px;
     background-color: rgba(130, 170, 255, 0.1);
     color: #c3e88d;
 }
 
 
-#custom-power {
-    padding: 0px 5px;
-    background-color: rgba(130, 170, 255, 0.1);
-    color: #828bb8;
-    min-width: 16px;
-}
-#custom-rofi.enabled {
+#custom-menu.enabled {
     padding: 0 5px;
     background-color: rgba(130, 170, 255, 0.2);
     color: #c3e88d;
@@ -112,7 +106,7 @@ button:hover {
 #pulseaudio,
 #wireplumber,
 #custom-media,
-#custom-rofi,
+#custom-menu,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -363,7 +357,7 @@ label:focus {
 /* Every icon gets the same fixed-width cell so glyphs of different
    widths still sit at an even pitch (bar "spacing" is 0). */
 #custom-sysmon, #power-profiles-daemon, #network, #wireplumber, #bluetooth,
-#idle_inhibitor, #keyboard-state > label, #custom-rofi, #custom-power {
+#idle_inhibitor, #keyboard-state > label, #custom-menu {
     padding: 0 7px;
     margin: 0;
     min-width: 20px;
@@ -373,8 +367,8 @@ label:focus {
 
 #keyboard-state { padding: 0; margin: 0; }
 #clock { padding: 0 12px; }
-#custom-rofi { color: #1793d1; padding: 0 10px; }
-#custom-power { padding: 0 10px; }
+#custom-menu { color: #1793d1; padding: 0 10px; }
+#clock { padding: 0 14px 0 12px; }
 
 #custom-sysmon.warning { color: #ffc777; }
 #custom-sysmon.critical { color: #ff757f; }

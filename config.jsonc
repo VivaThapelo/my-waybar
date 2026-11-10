@@ -7,7 +7,7 @@
     "spacing": 0, // Gaps come from each module's padding in style.css
     // Choose the order of the modules
     "modules-left": [
-	 "custom/rofi",
+	 "custom/menu",
         "hyprland/workspaces",
         "hyprland/submap",
         "custom/media"
@@ -24,9 +24,8 @@
         "custom/sysmon",
         "keyboard-state",
         //"hyprland/language",
-        "clock",
-        //"tray",
-        "custom/power"
+        "clock"
+        //"tray"
     ],
     // Modules configuration
      "hyprland/workspaces": {
@@ -182,20 +181,10 @@
         "on-scroll-down": "playerctl previous"
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/rofi": {
-	    "format": "",
-	    "on-click": "wofi --show drun"
-    },
-    "custom/power": {
-        "format" : "",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "systemctl poweroff",
-			"reboot": "systemctl reboot",
-			"suspend": "sh -c 'pidof hyprlock >/dev/null || hyprlock & sleep 1; systemctl suspend'",
-			"lock": "sh -c 'pidof hyprlock >/dev/null || hyprlock'"
-		}
+    "custom/menu": {
+        // System menu: apps, lock, sleep, restart, shut down, log out
+        "format": "",
+        "tooltip": false,
+        "on-click": "$HOME/.config/waybar/custom_modules/menu.sh"
     }
 }
