@@ -16,12 +16,10 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "mpd",
         "idle_inhibitor",
         "wireplumber",
         "network",
 	"bluetooth",
-        "power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
@@ -39,7 +37,7 @@
          "format": "{name}: {icon}",
 	 "active-only": false,
 	 "persistent-workspaces":{
-		"HDMI-A-1": [1,2,3,4,5]
+		"DP-1": [1,2,3,4,5]
 	 },
          "format-icons": {
              "1": "",
@@ -114,13 +112,16 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
+        "on-click": "ghostty --class=tui.btop -e btop",
         "format": "{}% ",
         "tooltip": false
     },
     "memory": {
+        "on-click": "ghostty --class=tui.btop -e btop",
         "format": "{}% "
     },
     "temperature": {
+        "on-click": "ghostty --class=tui.btop -e btop",
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
@@ -140,7 +141,7 @@
       }
     },
     "bluetooth": {
-	    "on-click": "blueman-manager",
+	    "on-click": "ghostty --class=tui.bluetui -e bluetui",
 	    "format": "({status}) ",
 	    "format-connected": "",
 	    "format-disabled": "",
@@ -149,18 +150,21 @@
 	"tooltip-format-enumerate-connected": "{device_alias}\\t{device_address}" 
     },
     "network": {
+        "on-click": "ghostty --class=tui.impala -e impala",
         //"interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "({signalStrength}%) ",
+        "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "on-click-right": "ghostty --class=tui.networkctl -e sh -c 'networkctl status; read _'"
     },
     "wireplumber": {
         "format": "{volume}% {icon}",
         "format-muted": "",
-        "on-click": "pavucontrol",
+        "on-click": "ghostty --class=tui.wiremix -e wiremix",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 5,
         "format-icons": ["", "", ""]
     },
     "custom/media": {
@@ -171,8 +175,11 @@
             "spotify": "",
             "default": "🎜"
         },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        "escape": false,
+        "exec": "playerctl --follow metadata --format '{\"text\": \"{{markup_escape(artist)}} - {{markup_escape(title)}}\", \"alt\": \"{{playerName}}\", \"class\": \"{{lc(status)}}\", \"tooltip\": \"{{playerName}}: {{markup_escape(title)}}\"}' 2> /dev/null",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/rofi": {
@@ -185,10 +192,10 @@
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		"menu-actions": {
-			"shutdown": "shutdown -h now",
-			"reboot": "reboot -r now",
+			"shutdown": "systemctl poweroff",
+			"reboot": "systemctl reboot",
 			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
+			"lock": "hyprlock"
 		}
     }
 }
